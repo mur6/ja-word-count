@@ -6,3 +6,5 @@ edition = "2018"
 
 [dependencies]
 sudachiclone = "0.2.1"
+lindera = "*"
+lindera-core = "*"
