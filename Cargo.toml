@@ -5,3 +5,4 @@ authors = ["MURAKI Taichi <muraki.taichi@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+sudachiclone = "0.2.1"
