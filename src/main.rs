@@ -3,6 +3,7 @@ use std::fs;
 
 use lindera::tokenizer::Tokenizer;
 use lindera_core::core::viterbi::Mode;
+use rayon::prelude::*;
 
 fn count_words(tokenizer: & mut Tokenizer, line: &str) -> usize {
     let tokens = tokenizer.tokenize(line);
@@ -10,7 +11,7 @@ fn count_words(tokenizer: & mut Tokenizer, line: &str) -> usize {
 }
 
 fn main() {
-    let mut tokenizer = Tokenizer::new(Mode::Normal, "");
+    //let tokenizer = Tokenizer::new(Mode::Normal, "");
 
     let args: Vec<String> = env::args().collect();
     let filename = &args[1];
@@ -19,14 +20,15 @@ fn main() {
     let contents = fs::read_to_string(filename).unwrap();
     println!("Contents opened.");
     //let mut count = 0;
-    let count: usize = contents.lines() .map(|line| count_words(&mut tokenizer, line)).sum();
+    let count: usize = contents
+        .par_lines()
+        .map_init(
+            || Tokenizer::new(Mode::Normal, ""),
+            |tokenizer, line| count_words(tokenizer, line),
+        )
+        .sum();
     println!("{}", count);
 }
-
-
-
-
-
 
 // fn main() {
 //     let dictionary = Dictionary::setup(None, None).unwrap();
