@@ -12,7 +12,10 @@ fn count_words(tokenizer: &mut Tokenizer, line: &str) -> usize {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let filename = &args[1];
+    let filename = args.get(1).unwrap_or_else(|| {
+        println!("Please give the input file.");
+        std::process::exit(1);
+    });
     let contents = fs::read_to_string(filename).unwrap();
     let count: usize = contents
         .par_lines()
