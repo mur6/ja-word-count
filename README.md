@@ -10,5 +10,5 @@ cargo build --release
 ## Usage
 
 ```shell
-./target/release/sudachi-rust-test 1M.txt
+./target/release/ja-word-count japanese.txt
 ```
