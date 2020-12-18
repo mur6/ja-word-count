@@ -536,6 +536,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dc6f3ad7b9d11a0c00842ff8de1b60ee58661048eb8049ed33c73594f359d7e6"
 
 [[package]]
+name = "ja-word-count"
+version = "0.1.0"
+dependencies = [
+ "lindera",
+ "lindera-core",
+ "rayon",
+]
+
+[[package]]
 name = "js-sys"
 version = "0.3.46"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1159,15 +1168,6 @@ name = "strsim"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
-
-[[package]]
-name = "sudachi-rust-test"
-version = "0.1.0"
-dependencies = [
- "lindera",
- "lindera-core",
- "rayon",
-]
 
 [[package]]
 name = "syn"
